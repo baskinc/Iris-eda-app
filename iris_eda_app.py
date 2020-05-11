@@ -4,7 +4,6 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 matplotlib.use("Agg")
-import seaborn as sns
 import joblib
 import os
 
@@ -155,4 +154,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main():
