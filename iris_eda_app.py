@@ -129,29 +129,29 @@ def main():
         st.json(prettified_result)
 
         st.subheader("Prediction Aspects")
-    if st.checkbox("Make Prediction"):
-        all_ml_dict = ["LR", "Decision Tree", "Naive Bayes", "RFOREST"]
-        model_choice = st.selectbox("Model Choice", all_ml_dict)
+        if st.checkbox("Make Prediction"):
+            all_ml_dict = ["LR", "Decision Tree", "Naive Bayes", "RFOREST"]
+            model_choice = st.selectbox("Model Choice", all_ml_dict)
 
-        if st.button("Predict"):
-            prediction_label = {"No_use": 1, "Long_term": 2, "Short_term": 3}
-            if model_choice == 'LR':
-                predictor = load_prediction_model("models/contraceptives_logit_model.pkl")
-                prediction = predictor.predict(sample_data)
-            elif model_choice == 'Decision Tree':
-                predictor = load_prediction_model("models/contraceptives_dcTree_model.pkl")
-                prediction = predictor.predict(sample_data)
+            if st.button("Predict"):
+                prediction_label = {"No_use": 1, "Long_term": 2, "Short_term": 3}
+                if model_choice == 'LR':
+                    predictor = load_prediction_model("models/contraceptives_logit_model.pkl")
+                    prediction = predictor.predict(sample_data)
+                elif model_choice == 'Decision Tree':
+                    predictor = load_prediction_model("models/contraceptives_dcTree_model.pkl")
+                    prediction = predictor.predict(sample_data)
 
-            elif model_choice == 'Naive Bayes':
-                predictor = load_prediction_model("models/contraceptives_nv_model.pkl")
-                prediction = predictor.predict(sample_data)
+                elif model_choice == 'Naive Bayes':
+                    predictor = load_prediction_model("models/contraceptives_nv_model.pkl")
+                    prediction = predictor.predict(sample_data)
 
-            elif model_choice == "RFOREST":
-                predictor = load_prediction_model("models/contraceptives_rf_model.pkl")
-                prediction = predictor.predict(sample_data)
+                elif model_choice == "RFOREST":
+                    predictor = load_prediction_model("models/contraceptives_rf_model.pkl")
+                    prediction = predictor.predict(sample_data)
 
-            final_result = get_key(prediction, prediction_label)
-            st.success(final_result)
+                final_result = get_key(prediction, prediction_label)
+                st.success(final_result)
 
 
 if __name__ == '__main__':
