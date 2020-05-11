@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 matplotlib.use("Agg")
 import joblib
 import os
-
 def get_value(val, my_dict):
     for key, value in my_dict.items():
         if val == key:
