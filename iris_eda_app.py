@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 matplotlib.use("Agg")
 import joblib
 import os
+import sklearn
 def get_value(val, my_dict):
     for key, value in my_dict.items():
         if val == key:
@@ -108,11 +109,11 @@ def main():
         result_media_exposure = get_value(choice_media_exposure, media_exposure)
 
 
-    results = [age, wife_education, husband_education, num_of_children_ever_born, result_wife_reg, result_wife_working,
+        results = [age, wife_education, husband_education, num_of_children_ever_born, result_wife_reg, result_wife_working,
            husband_occupation, standard_of_living, result_media_exposure]
-    displayed_results = [age, wife_education, husband_education, num_of_children_ever_born, choice_wife_reg,
+        displayed_results = [age, wife_education, husband_education, num_of_children_ever_born, choice_wife_reg,
                      choice_wife_working, husband_occupation, standard_of_living, choice_media_exposure]
-    prettified_result = {"age": age,
+        prettified_result = {"age": age,
                      "wife_education": wife_education,
                      "husband_education": husband_education,
                      "num_of_children_ever_born": num_of_children_ever_born,
@@ -121,12 +122,12 @@ def main():
                      "husband_occupation": husband_occupation,
                      "standard_of_living": standard_of_living,
                      "media_exposure": choice_media_exposure}
-    sample_data = np.array(results).reshape(1,-1)
+        sample_data = np.array(results).reshape(1,-1)
 
-    st.info(results)
-    st.json(prettified_result)
+        st.info(results)
+        st.json(prettified_result)
 
-    st.subheader("Prediction Aspects")
+        st.subheader("Prediction Aspects")
     if st.checkbox("Make Prediction"):
         all_ml_dict = ["LR", "Decision Tree", "Naive Bayes", "RFOREST"]
         model_choice = st.selectbox("Model Choice", all_ml_dict)
@@ -154,3 +155,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
